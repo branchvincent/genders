@@ -9,6 +9,7 @@
 ##
 AC_INIT([genders],[1.32.1])
 AC_CONFIG_AUX_DIR([config])
+AC_CONFIG_MACRO_DIRS([config])
 AC_CONFIG_SRCDIR([README])
 AC_CANONICAL_TARGET
 
@@ -245,7 +246,7 @@ AC_CONFIG_FILES( \
   src/extensions/perl/Genders/Makefile \
   src/extensions/perl/Genders/Genders.pm \
   src/extensions/python/Makefile \
-  src/extensions/python/genderssetup.py \
+  src/extensions/python/pyproject.toml \
   src/extensions/java/Makefile \
   src/testsuite/Makefile \
   src/testsuite/libgenders/Makefile \

@@ -13,21 +13,15 @@
 PYTHON_DESTDIR = @EXTENSION_DESTDIR@
 
 if WITH_PYTHON_EXTENSIONS
-all: genderssetup.py libgendersmodule.c genders.py
-	$(PYTHON) genderssetup.py build
+all: pyproject.toml libgendersmodule.c genders.py
+	$(PYTHON) -m pip wheel .
 
-install:
-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
+install pure_install install-data-local:
+	$(PYTHON) -m pip install --prefix=$(PYTHON_DESTDIR)$(prefix) .
 
-pure_install:
-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
-
-install-data-local:
-	$(PYTHON) genderssetup.py install --single-version-externally-managed --root=/ --prefix=$(PYTHON_DESTDIR)$(prefix) --exec-prefix=$(PYTHON_DESTDIR)$(exec_prefix)
-
-clean: 
+clean:
 	rm -rf build
 
 endif
 
-EXTRA_DIST = genderssetup.py libgendersmodule.c genders.py
+EXTRA_DIST = pyproject.toml libgendersmodule.c genders.py
