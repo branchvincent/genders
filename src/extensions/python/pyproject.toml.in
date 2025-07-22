@@ -1,0 +1,18 @@
+[project]
+name = "libgenders"
+version = "@PYTHONGENDERS_VERSION@"
+description = "This is the libgenders package"
+
+[tool.setuptools]
+py-modules = ["genders"]
+
+[[tool.setuptools.ext-modules]]
+name = "libgenders"
+include-dirs = ["../../../config", "../../libgenders"]
+library-dirs = ["../../libgenders/.libs"]
+libraries = ["genders"]
+sources = ["libgendersmodule.c"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
